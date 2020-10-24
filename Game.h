@@ -5,6 +5,7 @@
 //
 #ifndef Game_h
 #define Game_h
+#include "Player2.h"
 
 class Game {
 	private:
@@ -27,7 +28,7 @@ class Game {
 		void setGameLost(bool lost);
 
 		//Game function
-		void playGame();
+		void playGame(Player* Player1, Player2* Computer, GameBoard* Player1Ships, GameBoard* Player1Shots, GameBoard* ComputerShips, GameBoard* ComputerShots, Ship* Player1Carrier, Ship* Player1Battleship, Ship* Player1Cruiser, Ship* Player1Submarine, Ship* Player1Destroyer, Ship* ComputerCarrier, Ship* ComputerBattleship, Ship* ComputerCruiser, Ship* ComputerSubmarine, Ship* ComputerDestroyer);
 };
 
 #endif /* Game_h */
