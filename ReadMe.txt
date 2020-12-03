@@ -10,12 +10,13 @@ Read Me
 ****************************
 Description of the program
 **************************** 
-
+This program is a a version of the classis 
+boardgame battleship. 
 
 ****************************
 Source files
 ****************************
-name: main.cpp
+name: main.cpp 
 
 
 ****************************

@@ -13,8 +13,8 @@ using namespace std;
 Ship::Ship() {
 	/* intentionally blank */
 }
-Ship::Ship(string name, char type, int size, int HP)
-	: shipName(name), shipType(type), shipSize(size), hitPoints(HP), isSunk(false)
+Ship::Ship(string name, char type, int size)
+	: shipName(name), shipType(type), shipSize(size), hitPoints(size), isSunk(false)
 	{ /* intentionally blank */ }
 
 

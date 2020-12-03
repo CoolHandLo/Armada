@@ -61,7 +61,7 @@ void learnToPlay() {
 
 //Starts a new game.
 void playNewGame() {
-//Tempoary Variables
+	//Tempoary Variables
 	string name;
 	char shipOrientation;
 	string shipCoordinates = "";
@@ -83,27 +83,27 @@ void playNewGame() {
 	GameBoard* Player2Shots = new GameBoard;
 
 	//Human players ships
-	Ship* Player1Carrier = new Ship("Carrier", 'A', 5, 5);
+	Ship* Player1Carrier = new Ship("Carrier", 'A', 5);
 	Player1 -> addToShipCount();
-	Ship* Player1Battleship = new Ship("Battleship", 'B', 4, 4);
+	Ship* Player1Battleship = new Ship("Battleship", 'B', 4);
 	Player1 -> addToShipCount();
-	Ship* Player1Cruiser = new Ship("Cruiser", 'C', 3, 3);
+	Ship* Player1Cruiser = new Ship("Cruiser", 'C', 3);
 	Player1 -> addToShipCount();
-	Ship* Player1Submarine = new Ship("Submarine", 'S', 3, 3);
+	Ship* Player1Submarine = new Ship("Submarine", 'S', 3);
 	Player1 -> addToShipCount();
-	Ship* Player1Destroyer = new Ship("Destoyer", 'D', 2, 2);
+	Ship* Player1Destroyer = new Ship("Destoyer", 'D', 2);
 	Player1 -> addToShipCount();
 
 	//Computer players ships
-	Ship* Player2Carrier = new Ship("Carrier", 'A', 5, 5);
+	Ship* Player2Carrier = new Ship("Carrier", 'A', 5);
 	Computer -> addToShipCount();
-	Ship* Player2Battleship = new Ship("Battleship", 'B', 4, 4);
+	Ship* Player2Battleship = new Ship("Battleship", 'B', 4);
 	Computer -> addToShipCount();
-	Ship* Player2Cruiser = new Ship("Cruiser", 'C', 3, 3);
+	Ship* Player2Cruiser = new Ship("Cruiser", 'C', 3);
 	Computer -> addToShipCount();
-	Ship* Player2Submarine = new Ship("Submarine", 'S', 3, 3);
+	Ship* Player2Submarine = new Ship("Submarine", 'S', 3);
 	Computer -> addToShipCount();
-	Ship* Player2Destroyer = new Ship("Destoyer", 'D', 2, 2);
+	Ship* Player2Destroyer = new Ship("Destoyer", 'D', 2);
 
 	//Sets boards to pre-game state.
 	Player1Ships -> cleanBoard();
@@ -185,11 +185,23 @@ void playNewGame() {
 	delete Player2Cruiser;
 	delete Player2Submarine;
 	delete Player2Destroyer;
+
+	menu();
 }
 
 //Loads a game from 
 //savedGames directory
 void loadGame() {
+	Game* newGame = new Game;
+	string fileName;
+	cout << "Which board would you like to load?\n";
+	cout << endl;
+	cin >> fileName;
+	cout << endl;
+	cout << "Loading: " << fileName << endl;
+	cout << endl;
+	newGame -> loadBoard(fileName);
+
 	menu();
 }
 

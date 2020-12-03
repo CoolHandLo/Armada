@@ -270,14 +270,11 @@ void Player::addToFleet(Ship* Vessel, GameBoard* Board) {
 	Board -> printBoard();
 }
 
-
 void Player::fireTorpedo(GameBoard* Ships, GameBoard* Shots, Ship* Carrier, Ship* BattleShip, Ship* Cruiser, Ship* Submarine, Ship* Destroyer) {
 	string coordinates;
 	int xValue;
 	int yValue;
 	char target;
-
-
 	
 	while(true) {
 		Shots -> printBoard();

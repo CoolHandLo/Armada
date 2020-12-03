@@ -32,17 +32,17 @@ class Player {
 		//Test input is valid orientation. 
 		bool testOrientation(char orientationVal);
 
-		//Parses X value from coordinates.
-		int parseXVal(string coordinateVal, GameBoard* Board);
-
-		//Parses Y value from coordinates.
-		int parseYVal(string coordinateVal);
-
 
 	public:
 		//Constructors
 		Player();
 		Player(string name);
+
+		//Parses X value from coordinates.
+		int parseXVal(string coordinateVal, GameBoard* Board);
+
+		//Parses Y value from coordinates.
+		int parseYVal(string coordinateVal);
 
 		//Asseccor functions
 		string getPlayerName();
@@ -52,7 +52,6 @@ class Player {
 		int getShipsSunk();
 
 		//Mutator functions
-
 		void setPlayerName(string name);
 
 		//Adds 1 to hits.

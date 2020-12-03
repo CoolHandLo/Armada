@@ -2,12 +2,9 @@
 # for use with C++ files
 .SUFFIXES: .cpp
 
-subsystem: 
-	+$(MAKE) -c gameData
-
 
 # &&&&&&  Enter your own source file names   &&&&&&
-SOURCES = main.cpp 
+SOURCES = main.cpp functions.cpp Game.cpp GameBoard.cpp Player.cpp Player2.cpp Ship.cpp
 
 
 # &&&&&& Enter your own executable program name &&&&&&

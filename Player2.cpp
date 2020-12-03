@@ -63,7 +63,6 @@ bool Player2::testSpace(Ship* Vessel, GameBoard* Board) {
 		}
 	}
 
-
 	//Return conditions.
 	if (fitsOnBoard == true && collision == false) {
 		return true;
@@ -119,55 +118,82 @@ void Player2::addToFleet(Ship* Vessel, GameBoard* Board) {
 	placeShip(Vessel, Board);
 }
 
+//
+void Player2::addLoadedToFleet(Ship *Vessel, GameBoard *Board) {
+	if (testSpace(Vessel, Board)) {
+		placeShip(Vessel, Board);
+	} else {
+		while(true) {
+		//Assigns ship coordinates
+		Vessel -> setXVal(randomNum());
+		Vessel -> setYVal(randomNum());
+
+		if (testSpace(Vessel, Board)) {
+			break;
+			} 
+		}
+	placeShip(Vessel, Board);
+	}
+}
+
 void Player2::fireTorpedo(GameBoard* Ships, GameBoard* Shots, Ship* Carrier, Ship* BattleShip, Ship* Cruiser, Ship* Submarine, Ship* Destroyer) {
 	string coordinates;
 	int xValue;
 	int yValue;
 	char target;
 	
-	while(true) {
-		xValue = this -> randomNum();
-		yValue = this -> randomNum();
+	if (shipTargeted) {
 		
-		//Reads target value
-		target = Ships -> getChar(xValue, yValue);
 
-		//If it's a miss.
-		if (target == '^') {
-			cout << "The opposing fleet has missed!\n";
-			this -> addMiss();
-			Shots -> setChar('O', xValue, yValue);
-			Ships -> setChar('O', xValue, yValue);
-			break;
+	} else { 
+		while(true) {
+			xValue = this -> randomNum();
+			yValue = this -> randomNum();
+			
+			//Reads target value
+			target = Ships -> getChar(xValue, yValue);
 
-			//If it's already been targeted.
-		} else if (target == 'O' || target == 'X') {
-			continue;
+			//If it's a miss.
+			if (target == '^') {
+				cout << "The opposing fleet has missed!\n";
+				this -> addMiss();
+				Shots -> setChar('O', xValue, yValue);
+				Ships -> setChar('O', xValue, yValue);
+				break;
 
-			//If its a hit.
-		} else if (isalpha(target)) {
-			this -> addHit();
-			Shots -> setChar('X', xValue, yValue);
-			Ships -> setChar('X', xValue, yValue);
-			if (target == 'A') {
-				Carrier -> subtractHitPoint();
-				cout << "Your Carrier has been hit!\n";
-			} else if (target == 'B') {
-				BattleShip -> subtractHitPoint();
-				cout << "Your Battleship has been hit!\n";
-			} else if (target == 'C') {
-				Cruiser -> subtractHitPoint();
-				cout << "Your Cruiser has been hit!\n";
-			} else if (target == 'S') {
-				Submarine -> subtractHitPoint();
-				cout << "Your Submarine has been hit!\n";
-			} else if (target == 'D') {
-				Destroyer -> subtractHitPoint();
-				cout << "Your Destroyer has been hit!\n";
+				//If it's already been targeted.
+			} else if (target == 'O' || target == 'X') {
+				continue;
+
+				//If its a hit.
+			} else if (isalpha(target)) {
+				this -> addHit();
+				this -> shipTargeted = true;
+				this -> lastHitX = xValue;
+				this -> lastHitY = yValue;
+				Shots -> setChar('X', xValue, yValue);
+				Ships -> setChar('X', xValue, yValue);
+
+				if (target == 'A') {
+					Carrier -> subtractHitPoint();
+					cout << "Your Carrier has been hit!\n";
+				} else if (target == 'B') {
+					BattleShip -> subtractHitPoint();
+					cout << "Your Battleship has been hit!\n";
+				} else if (target == 'C') {
+					Cruiser -> subtractHitPoint();
+					cout << "Your Cruiser has been hit!\n";
+				} else if (target == 'S') {
+					Submarine -> subtractHitPoint();
+					cout << "Your Submarine has been hit!\n";
+				} else if (target == 'D') {
+					Destroyer -> subtractHitPoint();
+					cout << "Your Destroyer has been hit!\n";
+				}
+				break;
 			}
-			break;
 		}
-	}
+	}	
 }
 //Ckecks if a ship is sunk. 
 void Player2::checkShip(Ship* Vessel) {

@@ -27,7 +27,7 @@ class Ship {
 	public:
 		//Constructors
 		Ship();
-		Ship(string name, char type, int size, int HP);
+		Ship(string name, char type, int size);
 		
 		//Assecor functions
 		int getXVal();

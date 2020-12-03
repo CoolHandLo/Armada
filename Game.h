@@ -27,8 +27,12 @@ class Game {
 		void setGameWon(bool won);
 		void setGameLost(bool lost);
 
-		//Game function
+
+		//New game function
 		void playGame(Player* Player1, Player2* Computer, GameBoard* Player1Ships, GameBoard* Player1Shots, GameBoard* ComputerShips, GameBoard* ComputerShots, Ship* Player1Carrier, Ship* Player1Battleship, Ship* Player1Cruiser, Ship* Player1Submarine, Ship* Player1Destroyer, Ship* ComputerCarrier, Ship* ComputerBattleship, Ship* ComputerCruiser, Ship* ComputerSubmarine, Ship* ComputerDestroyer);
+
+		//Load game board function.
+		void loadBoard(string fileName);
 };
 
 #endif /* Game_h */

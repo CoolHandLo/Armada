@@ -4,7 +4,7 @@
 //main.cpp
 //Created by Lo Evans
 //
-#include "gameData/functions.h"
+#include "functions.h"
 
 int main() {
 
